@@ -122,6 +122,7 @@ router.put('/:student_id',(req,res,next)=>{
 
 router.get('/',(req,res,next)=>{
     // Student.find({id: "07"})
+    Student.find( { name: { $regex: req.query , $options: 'i' } } )
     .then(result=>{
         res.status(200).json({
             message: "Search finished",
